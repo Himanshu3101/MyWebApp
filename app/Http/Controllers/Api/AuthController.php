@@ -11,10 +11,10 @@ class AuthController extends Controller
 {
     public function login(Request $request){
 
-        $request->validate([
+        $request->validate(
             'email'=>'required|string',
             'password'=>'required|string'
-        ]); 
+        ]);
 
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials)){
@@ -29,7 +29,7 @@ class AuthController extends Controller
         return response()->json([
             "user"=>$user
         ],200);
-        
+
     }
 
     public function signup(Request $request){
